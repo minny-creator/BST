@@ -125,16 +125,10 @@ node* successor(node* root,int key){
 if(p==NULL)return p;
     if(p->right!=NULL){
         node* q=p->right;
-        for(int i=0;i>=0;i++){
-        if(q->left!=NULL){
-            return q->left;
-        }
-        else if(q->right==NULL && q->left==NULL)break;
-        else{
-            q=q->right;
-        }
-    }
-    return p->right;
+            while(q->left!=NULL){
+                q=q->left;
+            }
+    return q;
     }
     node* q=searchParent(p->right,root,key);
 node* null=NULL;
@@ -324,4 +318,5 @@ print(root,n);
         scanf("%d",&a);
     }
 free(root);
+
 }
