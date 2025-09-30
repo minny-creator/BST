@@ -141,6 +141,30 @@ return null;
 }
     }
 
+node* preceeder(node* root,node* val){
+    node* p=val;
+    if(p==NULL) return p;
+    if(p->left!=NULL){
+        node* q=p->left;
+        while(q->right!=NULL){
+            q=q->right;
+        }
+        return q;
+    }
+    node* q=searchParent(root,p);
+    if(q==NULL)return q;
+    else{
+        while(q!=NULL){
+            if(q->right==p)return q;
+            else{
+                p=q;
+                q=searchParent(root,p);
+            }
+        }
+        return q;
+    }
+}
+
 void print(node* root,int n){
     
     if(root!=NULL){
@@ -320,3 +344,4 @@ print(root,n);
 free(root);
 
 }
+
